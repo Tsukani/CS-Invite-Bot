@@ -1,4 +1,4 @@
-<div style="display: flex; flex-direction: column; align-items: center;">
+<div align="center">
   <img src="img/readme/tudou.jpg" alt="Logo" width="80" height="80">
   <br />
   <h1>CS Invite Bot</h1>
@@ -7,9 +7,10 @@
 
 ## About The Project
 
-<div style="display: flex; justify-content: center; height: 400px; gap: 20px;">
-  <img src="img/readme/discord.png" alt="Discord Bot Picture" title="Discord Bot">
-  <img src="img/readme/in-game.png" alt="In-game Invite Picture" title="In-game Invite">
+
+<div align="center">
+  <img src="img/readme/discord.png" alt="Discord Bot Picture" title="Discord Bot" height="400">
+  <img src="img/readme/in-game.png" alt="In-game Invite Picture" title="In-game Invite" height="400">
 </div>
 
 ### What is this tool?
