@@ -92,7 +92,7 @@ The bot currently only features two commands:
 
 ## Will I get banned for using this?
 
-Despite myself never having gotten banned for using this for well over two year and having invited thousands of people, I cannot guarantee the same won't happen to you. This tool does not initialize [VAC](https://help.steampowered.com/en/faqs/view/571A-97DA-70E9-FF74) and therefore VAC-bans should not be possible, but manual bans (such as a [Community Ban](https://help.steampowered.com/en/faqs/view/4F62-35F9-F395-5C23) or a [manual Game Ban](https://help.steampowered.com/en/faqs/view/4E54-0B96-D0A4-1557)) could still occur. Use this tool at your own risk and only use Steam bot accounts you would be willing to potentially lose.
+Despite myself never having gotten banned for using this for well over two years and having invited thousands of people, I cannot guarantee the same won't happen to you. This tool does not initialize [VAC](https://help.steampowered.com/en/faqs/view/571A-97DA-70E9-FF74) and therefore VAC-bans should not be possible, but manual bans (such as a [Community Ban](https://help.steampowered.com/en/faqs/view/4F62-35F9-F395-5C23) or a [manual Game Ban](https://help.steampowered.com/en/faqs/view/4E54-0B96-D0A4-1557)) could still occur. Use this tool at your own risk and only use Steam bot accounts you would be willing to potentially lose.
 
 Despite the tool automatically hiding the Steam bot account by making the name invisible and the location expanding making it impossible to interact with the invite (and see the account that is inviting you), it is still possible in a very unlikely scenario for somebody to dump the network packets and find your account.
 
