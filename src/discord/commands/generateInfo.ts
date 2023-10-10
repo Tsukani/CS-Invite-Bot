@@ -2,7 +2,7 @@ import { EmbedBuilder, CommandInteraction, SlashCommandBuilder } from 'discord.j
 
 export const commandMeta = new SlashCommandBuilder()
     .setName('generate-info')
-    .setDescription('[ADMIN] Generate information about the bot.');
+    .setDescription('Generate information about the bot.');
 
 export const execute = async (interaction: CommandInteraction) => {
     // Deferring and deleting the reply is a hack to hide the "NAME used /invite" text shown above the embed
@@ -42,7 +42,7 @@ export const execute = async (interaction: CommandInteraction) => {
                     },
                     {
                         name: 'rank (optional)',
-                        value: 'The rank shown in the invite. If the selected gamemode is __Premiere__ the rank will be shown as a CS Rating and goes between **1 - 99,999**.\nIf the selected gamemode is __Wingman__ the rank will show as the classic CS Skill Groups and goes between between **1 - 18**.\nDefaults to CS Rating 99,999 (Premiere) or The Global Elite (Wingman).'
+                        value: 'The rank shown in the invite. If the selected gamemode is __Premiere__ the rank will be shown as a CS Rating and goes between **1 - 99,999**.\nIf the selected gamemode is __Wingman__ the rank will show as the classic CS Skill Groups and goes between **1 - 18**.\nDefaults to CS Rating 99,999 (Premiere) or The Global Elite (Wingman).'
                     },
                     {
                         name: ' ',

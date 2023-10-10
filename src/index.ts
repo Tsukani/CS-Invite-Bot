@@ -4,6 +4,11 @@ import { startBot } from './steam/botHandler';
 import './discord/discordMain';
 import { updateAvailableBotCount } from './discord/discordMain';
 
+if (!fs.existsSync('../.env') || !fs.existsSync('../bots.txt')) {
+    colorLog('red', 'Missing .env and/or bots.txt file! Remember to fill in the values and renaming the files.');
+    process.exit();
+}
+
 // Starts all bots in bots.txt
 Promise.all(
     fs
