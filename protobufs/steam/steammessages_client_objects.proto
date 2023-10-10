@@ -1,0 +1,266 @@
+import "enums.proto";
+
+option optimize_for = SPEED;
+option cc_generic_services = false;
+
+enum ECloudPendingRemoteOperation {
+	k_ECloudPendingRemoteOperationNone = 0;
+	k_ECloudPendingRemoteOperationAppSessionActive = 1;
+	k_ECloudPendingRemoteOperationUploadInProgress = 2;
+	k_ECloudPendingRemoteOperationUploadPending = 3;
+	k_ECloudPendingRemoteOperationAppSessionSuspended = 4;
+}
+
+enum ESteamDeckKeyboardLayout {
+	k_ESteamDeckKeyboardLayout_QWERTY = 0;
+	k_ESteamDeckKeyboardLayout_German = 1;
+	k_ESteamDeckKeyboardLayout_French = 2;
+}
+
+message SteamMessagesClientIClientForcedEnumDependencies {
+	optional .EBluetoothDeviceType a = 1 [default = k_BluetoothDeviceType_Invalid];
+	optional .EStorageBlockContentType b = 2 [default = k_EStorageBlockContentType_Invalid];
+	optional .EStorageBlockFileSystemType c = 3 [default = k_EStorageBlockFileSystemType_Invalid];
+}
+
+message CMsgNetworkDeviceIP4Address {
+	optional int32 ip = 1 [default = 0];
+	optional int32 netmask = 2;
+}
+
+message CMsgNetworkDeviceIP4Config {
+	repeated .CMsgNetworkDeviceIP4Address addresses = 1;
+	repeated int32 dns_ip = 2;
+	optional int32 gateway_ip = 3;
+	optional bool is_dhcp_enabled = 4;
+	optional bool is_default_route = 5;
+	optional bool is_enabled = 6 [default = false];
+}
+
+message CMsgNetworkDeviceIP6Address {
+	optional string ip = 1;
+}
+
+message CMsgNetworkDeviceIP6Config {
+	repeated .CMsgNetworkDeviceIP6Address addresses = 1;
+	repeated string dns_ip = 2;
+	optional string gateway_ip = 3;
+	optional bool is_dhcp_enabled = 4;
+	optional bool is_default_route = 5;
+	optional bool is_enabled = 6 [default = false];
+}
+
+message CMsgNetworkDevicesData {
+	message Device {
+		message Wired {
+			optional bool is_cable_present = 1 [default = false];
+			optional uint32 speed_mbit = 2;
+			optional string friendly_name = 3;
+		}
+
+		message Wireless {
+			message AP {
+				optional uint32 id = 1 [default = 0];
+				optional int32 estrength = 2;
+				optional string ssid = 3;
+				optional bool is_active = 4;
+				optional bool is_autoconnect = 5;
+				optional int32 esecurity = 6;
+				optional string user_name = 7;
+				optional string password = 8;
+				optional int32 strength_raw = 9;
+			}
+
+			repeated .CMsgNetworkDevicesData.Device.Wireless.AP aps = 1;
+			optional int32 esecurity_supported = 2;
+		}
+
+		optional uint32 id = 1 [default = 0];
+		optional int32 etype = 2;
+		optional int32 estate = 3;
+		optional string mac = 4;
+		optional string vendor = 5;
+		optional string product = 6;
+		optional .CMsgNetworkDeviceIP4Config ip4 = 7;
+		optional .CMsgNetworkDeviceIP6Config ip6 = 8;
+		optional .CMsgNetworkDevicesData.Device.Wired wired = 9;
+		optional .CMsgNetworkDevicesData.Device.Wireless wireless = 10;
+	}
+
+	repeated .CMsgNetworkDevicesData.Device devices = 1;
+	optional bool is_wifi_enabled = 2;
+	optional bool is_wifi_scanning_enabled = 3;
+}
+
+message CMsgNetworkDeviceConnect {
+	message KnownAP {
+		optional uint32 ap_id = 1;
+	}
+
+	message CustomAP {
+		optional string ssid = 1;
+		optional int32 esecurity = 2;
+	}
+
+	message Credentials {
+		optional string username = 1;
+		optional string password = 2;
+	}
+
+	optional uint32 device_id = 1 [default = 0];
+	optional .CMsgNetworkDeviceConnect.Credentials credentials = 4;
+	optional .CMsgNetworkDeviceIP4Config ip4 = 5;
+	optional .CMsgNetworkDeviceIP6Config ip6 = 6;
+
+	oneof ap_info {
+		.CMsgNetworkDeviceConnect.KnownAP ap_known = 2;
+		.CMsgNetworkDeviceConnect.CustomAP ap_custom = 3;
+	}
+}
+
+message CMsgStorageDevicesData {
+	message Drive {
+		optional uint32 id = 1 [default = 0];
+		optional string model = 2;
+		optional string vendor = 3;
+		optional string serial = 4;
+		optional bool is_ejectable = 5;
+		optional uint64 size_bytes = 6;
+	}
+
+	message BlockDevice {
+		optional uint32 id = 1 [default = 0];
+		optional uint32 drive_id = 2 [default = 0];
+		optional string path = 3;
+		optional string friendly_path = 4;
+		optional string label = 5;
+		optional uint64 size_bytes = 6;
+		optional bool is_formattable = 7;
+		optional bool is_read_only = 8;
+		optional bool is_root_device = 9;
+		optional .EStorageBlockContentType content_type = 10 [default = k_EStorageBlockContentType_Invalid];
+		optional .EStorageBlockFileSystemType filesystem_type = 11 [default = k_EStorageBlockFileSystemType_Invalid];
+		optional string mount_path = 12;
+	}
+
+	repeated .CMsgStorageDevicesData.Drive drives = 1;
+	repeated .CMsgStorageDevicesData.BlockDevice block_devices = 2;
+}
+
+message CCloud_PendingRemoteOperation {
+	optional .ECloudPendingRemoteOperation operation = 1 [default = k_ECloudPendingRemoteOperationNone];
+	optional string machine_name = 2;
+	optional uint64 client_id = 3;
+	optional uint32 time_last_updated = 4;
+}
+
+message CMsgCloudPendingRemoteOperations {
+	repeated .CCloud_PendingRemoteOperation operations = 1;
+}
+
+message CMsgBluetoothDevicesData {
+	message Adapter {
+		optional uint32 id = 1 [default = 0];
+		optional string mac = 2;
+		optional string name = 3;
+		optional bool is_enabled = 4;
+		optional bool is_discovering = 5;
+	}
+
+	message Device {
+		optional uint32 id = 1 [default = 0];
+		optional uint32 adapter_id = 2 [default = 0];
+		optional .EBluetoothDeviceType etype = 3 [default = k_BluetoothDeviceType_Invalid];
+		optional string mac = 4;
+		optional string name = 5;
+		optional bool is_connected = 6;
+		optional bool is_paired = 7;
+		optional int32 strength_raw = 8;
+	}
+
+	repeated .CMsgBluetoothDevicesData.Adapter adapters = 1;
+	repeated .CMsgBluetoothDevicesData.Device devices = 2;
+}
+
+message CMsgBluetoothSettings {
+	optional bool is_enabled = 1;
+}
+
+message CMsgSystemPerfDiagnosticEntry {
+	optional string name = 1;
+	optional string value = 2;
+}
+
+message CMsgSystemPerfNetworkInterface {
+	optional string name = 1;
+	optional double timestamp = 2;
+	optional int64 tx_bytes_total = 3;
+	optional int64 rx_bytes_total = 4;
+	optional int32 tx_bytes_per_sec = 5;
+	optional int32 rx_bytes_per_sec = 6;
+}
+
+message CMsgSystemPerfDiagnosticInfo {
+	repeated .CMsgSystemPerfDiagnosticEntry entries = 1;
+	repeated .CMsgSystemPerfNetworkInterface interfaces = 2;
+}
+
+message CMsgSystemPerfSettings {
+	optional float diagnostic_update_rate = 1;
+	optional .ESystemServiceState system_trace_service_state = 2 [default = k_ESystemServiceState_Unavailable];
+	optional .ESystemServiceState graphics_profiling_service_state = 3 [default = k_ESystemServiceState_Unavailable];
+	optional .ESystemServiceState perf_overlay_service_state = 4 [default = k_ESystemServiceState_Unavailable];
+	optional .EGraphicsPerfOverlayLevel perf_overlay_level = 5 [default = k_EGraphicsPerfOverlayLevel_Hidden];
+	repeated .EGPUPerformanceLevel gpu_performance_levels_available = 6;
+	optional .EGPUPerformanceLevel gpu_performance_level = 7 [default = k_EGPUPerformanceLevel_Invalid];
+	optional int32 gpu_performance_manual_mhz = 8;
+	optional int32 gpu_performance_manual_min_mhz = 9;
+	optional int32 gpu_performance_manual_max_mhz = 10;
+	optional bool perf_overlay_is_standalone = 11;
+	optional int32 fps_limit = 12;
+	optional bool is_variable_resolution_enabled = 13;
+	optional bool is_dynamic_refresh_rate_enabled = 14;
+	optional int32 tdp_limit = 15;
+	optional .ECPUGovernor cpu_governor = 16 [default = k_ECPUGovernor_Invalid];
+	optional int32 cpu_governor_manual_mhz = 17;
+	optional bool is_fsr_enabled = 18;
+	optional int32 fsr_sharpness = 19;
+	optional int32 cpu_governor_manual_min_mhz = 20;
+	optional int32 cpu_governor_manual_max_mhz = 21;
+	optional int32 fsr_sharpness_min = 22;
+	optional int32 fsr_sharpness_max = 23;
+}
+
+message CMsgSystemManagerSettings {
+	optional float idle_backlight_dim_battery_seconds = 1;
+	optional float idle_backlight_dim_ac_seconds = 2;
+	optional float idle_suspend_battery_seconds = 3;
+	optional float idle_suspend_ac_seconds = 4;
+	optional bool idle_suspend_supressed = 5;
+	optional bool automatic_display_brightness_enabled = 6;
+	optional float als_lux_latest = 7;
+	optional float als_lux_median = 8;
+	optional float display_brightness_linear = 9;
+}
+
+message CMsgUpdaterProgress {
+	optional float stage_progress = 1;
+	optional int64 stage_size_bytes = 2;
+	optional fixed32 rtime_estimated_completion = 3;
+}
+
+message CMsgUpdaterInfo {
+	optional .EUpdaterState state = 1 [default = k_EUpdaterState_Invalid];
+	optional .EUpdaterState previous_state = 2 [default = k_EUpdaterState_Invalid];
+	optional int32 eresult_previous_state = 3 [default = 2];
+	optional .CMsgUpdaterProgress progress = 4;
+}
+
+message CMsgCellList {
+	message Cell {
+		optional uint32 cell_id = 1;
+		optional string loc_name = 2;
+	}
+
+	repeated .CMsgCellList.Cell cells = 1;
+}
