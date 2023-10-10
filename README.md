@@ -9,8 +9,8 @@
 
 
 <div align="center">
-  <img src="img/readme/discord.png" alt="Discord Bot Picture" title="Discord Bot" height="400">
-  <img src="img/readme/in-game.png" alt="In-game Invite Picture" title="In-game Invite" height="400">
+  <img src="img/readme/discord.png" alt="Discord Bot Picture" title="Discord Bot" height="300">
+  <img src="img/readme/in-game.png" alt="In-game Invite Picture" title="In-game Invite" height="300">
 </div>
 
 ### What is this tool?
