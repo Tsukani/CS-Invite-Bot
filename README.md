@@ -7,7 +7,6 @@
 
 ## About The Project
 
-
 <div align="center">
   <img src="img/readme/discord.png" alt="Discord Bot Picture" title="Discord Bot" height="300">
   <img src="img/readme/in-game.png" alt="In-game Invite Picture" title="In-game Invite" height="300">
@@ -95,5 +94,9 @@ The bot currently only features two commands:
 Despite myself never having gotten banned for using this for well over two years and having invited thousands of people, I cannot guarantee the same won't happen to you. This tool does not initialize [VAC](https://help.steampowered.com/en/faqs/view/571A-97DA-70E9-FF74) and therefore VAC-bans should not be possible, but manual bans (such as a [Community Ban](https://help.steampowered.com/en/faqs/view/4F62-35F9-F395-5C23) or a [manual Game Ban](https://help.steampowered.com/en/faqs/view/4E54-0B96-D0A4-1557)) could still occur. Use this tool at your own risk and only use Steam bot accounts you would be willing to potentially lose.
 
 Despite the tool automatically hiding the Steam bot account by making the name invisible and the location expanding making it impossible to interact with the invite (and see the account that is inviting you), it is still possible in a very unlikely scenario for somebody to dump the network packets and find your account.
+
+## Protobufs Repository
+
+Dumped protobufs are taken from the [SteamDatabase Protobufs repository](https://github.com/SteamDatabase/Protobufs). If anything breaks it might be possible to update the [provided protobufs](https://github.com/Tsukani/CS-Invite-Bot/tree/master/protobufs) with a newer version to fix the problem.
 
 ### **[TSUKANI//DEV](https://tsukani.dev)**
