@@ -101,7 +101,7 @@ const _encode = (object: any, buffer: ByteBuffer, name: string) => {
 
 // Encode SteamIDs into a Buffer
 export const encodeUids = (steamids: SteamID[]) => {
-    let outputBuffer = [];
+    const outputBuffer = [];
 
     for (let id of steamids.map((s) => s.accountid)) {
         while (id > 0x7f) {

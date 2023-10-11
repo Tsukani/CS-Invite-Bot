@@ -56,6 +56,7 @@ export const beginInviting = async (
             }
 
             if (resolvedID) {
+                // Get the profile's name and avatar
                 await fetch(
                     `http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=${config.STEAM_API}&steamids=${resolvedID}`
                 ).then(async (res) => {
@@ -107,7 +108,7 @@ export const beginInviting = async (
 export const stopInviteLoop = (args: { username?: string; interaction?: ButtonInteraction<CacheType> }) => {
     const { username, interaction } = args;
 
-    // If a interaction is provided (button click), validate the event was triggered by the original inviter
+    // If an interaction is provided (button click), validate the event was triggered by the original inviter
     if (interaction) {
         if (
             interaction.message.interaction?.user.id !== interaction.user.id &&
