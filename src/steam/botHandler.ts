@@ -97,7 +97,7 @@ const connectToGC = async (bot: BotRecord) => {
             Buffer.from(CMsgClientHello.encode({}).finish())
         );
 
-        // Listens for the response from the CS Game Coordinator and validate connection
+        // Listens for the response from the CS Game Coordinator and validates connection
         bot.botClient.once('receivedFromGC', (appid, type, message) => {
             if (appid === 730 && type === EGCBaseClientMsg.values.k_EMsgGCClientWelcome) {
                 const CMsgClientWelcome = protos.lookupType('CMsgClientWelcome');
@@ -162,7 +162,7 @@ export const createLobby = async (bot: BotRecord) => {
             EMsg.values.k_EMsgClientMMSCreateLobbyResponse,
             CMsgClientMMSCreateLobbyResponse
         ).then(async (lobbyResponseMessage) => {
-            // Retrieve the lobbyID from the response
+            // Retrieves the lobbyID from the response
             const data = lobbyResponseMessage as { app_id: number; steam_id_lobby: Long; eresult: number };
             if (data.steam_id_lobby) {
                 colorLog('blue', `Got Lobby ID ${data.steam_id_lobby.toString()}!`, bot.username);
@@ -237,7 +237,7 @@ const updateLobby = async (bot: BotRecord, lobbyID: string) => {
             EMsg.values.k_EMsgClientMMSSetLobbyDataResponse,
             CMsgClientMMSSetLobbyDataResponse
         ).then(async (lobbyDataResponseMessage) => {
-            // Validate that the lobby was updated
+            // Validates that the lobby was updated
             const data = lobbyDataResponseMessage as { app_id: number; steam_id_lobby: Long; eresult: number };
             if (data.eresult === 1) {
                 colorLog('blue', `Updated lobby (${data.steam_id_lobby}) with message "${bot.message}"!`, bot.username);
@@ -301,7 +301,7 @@ export const startInviteLoop = async (bot: BotRecord) => {
         }, 250);
     }
 
-    // Stop inviting after the specified time
+    // Stops inviting after the specified time
     const timeout = setTimeout(() => {
         stopInviteLoop({ username: bot.username });
     }, bot.inviteTime * 1000);

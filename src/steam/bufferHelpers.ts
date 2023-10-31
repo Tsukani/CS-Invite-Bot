@@ -1,17 +1,17 @@
 import ByteBuffer from 'bytebuffer';
 import SteamID from 'steamid';
 
-const Type = {
-    None: 0,
-    String: 1,
-    Int32: 2,
-    Float32: 3,
-    Pointer: 4,
-    WideString: 5,
-    Color: 6,
-    UInt64: 7,
-    End: 8
-};
+enum Type {
+    None = 0,
+    String = 1,
+    Int32 = 2,
+    Float32 = 3,
+    Pointer = 4,
+    WideString = 5,
+    Color = 6,
+    UInt64 = 7,
+    End = 8
+}
 
 // Encodes an object into a ByteBuffer
 export const encode = (
@@ -99,7 +99,7 @@ const _encode = (object: any, buffer: ByteBuffer, name: string) => {
     }
 };
 
-// Encode SteamIDs into a Buffer
+// Encodes SteamIDs into a Buffer
 export const encodeUids = (steamids: SteamID[]) => {
     const outputBuffer = [];
 

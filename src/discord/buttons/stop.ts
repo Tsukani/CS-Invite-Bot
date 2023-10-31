@@ -1,4 +1,4 @@
-import { ButtonInteraction, ThreadChannel } from 'discord.js';
+import { ButtonInteraction } from 'discord.js';
 import { stopInviteLoop } from '../../steam/inviteWrapper';
 
 export const interactionMeta = {

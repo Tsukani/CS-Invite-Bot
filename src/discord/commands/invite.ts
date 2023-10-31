@@ -78,7 +78,7 @@ export const commandMeta = new SlashCommandBuilder()
     });
 
 export const execute = async (interaction: CommandInteraction) => {
-    // Get arguments provided from command
+    // Get arguments provided from the command
     const profiles = (interaction.options.get('profile')!.value as string).split(' ');
     const message = interaction.options.get('message')!.value as string;
     const time = (interaction.options.get('time')?.value as 5 | 30 | 60 | 300 | 600) ?? 300;
