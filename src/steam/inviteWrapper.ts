@@ -2,7 +2,7 @@ import { ButtonInteraction, CacheType, GuildMember, PermissionsBitField, EmbedBu
 import { createLobby, startInviteLoop } from './botHandler';
 import botList, { resetBotStatus } from './botList';
 import { colorLog } from '../logHandler';
-import { config } from '../enviromentConfig';
+import { config } from '../environmentConfig';
 import { updateAvailableBotCount } from '../discord/discordMain';
 
 // Prepare for inviting

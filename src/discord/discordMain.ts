@@ -1,5 +1,5 @@
 import { colorLog } from '../logHandler';
-import { config } from '../enviromentConfig';
+import { config } from '../environmentConfig';
 
 import { ActivityType, Client } from 'discord.js';
 import { commands } from './commands';

@@ -1,5 +1,5 @@
 import { REST, Routes } from 'discord.js';
-import { config } from '../enviromentConfig';
+import { config } from '../environmentConfig';
 import { commands } from './commands';
 import { colorLog } from '../logHandler';
 
